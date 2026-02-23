@@ -866,6 +866,57 @@ document.addEventListener('selectstart', (e) => {
 
 init();
 </script>
+
+<!-- Pro Features Section -->
+<style>
+.pro-section{position:relative;margin:32px 20px;border-radius:12px;overflow:hidden;cursor:pointer}
+.pro-preview{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:32px;filter:blur(4px);pointer-events:none;user-select:none}
+.pro-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:24px 16px;text-align:center}
+.pro-card-icon{font-size:2rem;margin-bottom:8px}
+.pro-card-title{font-size:.95rem;font-weight:600;color:var(--text);margin-bottom:6px}
+.pro-card-desc{font-size:.75rem;color:var(--text2)}
+.pro-overlay{position:absolute;inset:0;background:rgba(22,33,62,.7);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;z-index:10}
+.pro-overlay .lock-icon{font-size:2.5rem}
+.pro-overlay .lock-text{font-size:1.1rem;font-weight:700;color:var(--text);letter-spacing:1px}
+.pro-modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:10000;align-items:center;justify-content:center}
+.pro-modal-bg.open{display:flex}
+.pro-modal{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:32px;max-width:400px;width:90%;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,.5)}
+.pro-modal h2{font-size:1.3rem;margin-bottom:20px;color:var(--text)}
+.pro-modal ul{list-style:none;text-align:left;margin-bottom:20px;padding:0}
+.pro-modal ul li{padding:8px 0;font-size:.9rem;color:var(--text);border-bottom:1px solid var(--border)}
+.pro-modal ul li:last-child{border-bottom:none}
+.pro-modal ul li .check{color:var(--success);margin-right:8px;font-weight:700}
+.pro-modal .price{font-size:2rem;font-weight:800;color:var(--accent);margin-bottom:20px}
+.pro-modal .btn-upgrade{display:inline-block;background:var(--accent);color:#fff;padding:14px 32px;border-radius:8px;font-size:1rem;font-weight:700;text-decoration:none;transition:opacity .2s}
+.pro-modal .btn-upgrade:hover{opacity:.85}
+.pro-modal .btn-later{display:block;margin-top:14px;background:none;border:none;color:var(--text2);font-size:.85rem;cursor:pointer;padding:6px}
+.pro-modal .btn-later:hover{color:var(--text)}
+@media(max-width:600px){.pro-preview{grid-template-columns:1fr;gap:10px;padding:20px}.pro-modal{padding:24px}}
+</style>
+
+<div class="pro-section" id="proSection" onclick="document.getElementById('proModal').classList.add('open')">
+  <div class="pro-preview">
+    <div class="pro-card"><div class="pro-card-icon">📐</div><div class="pro-card-title">Template Library</div><div class="pro-card-desc">50+ ready-made grid layouts for common UI patterns</div></div>
+    <div class="pro-card"><div class="pro-card-icon">📱</div><div class="pro-card-title">Responsive Export</div><div class="pro-card-desc">Export CSS for all breakpoints in one click</div></div>
+    <div class="pro-card"><div class="pro-card-icon">⚛️</div><div class="pro-card-title">React Components</div><div class="pro-card-desc">Export grid layouts as ready-to-use React components</div></div>
+  </div>
+  <div class="pro-overlay"><span class="lock-icon">🔒</span><span class="lock-text">Pro Features</span></div>
+</div>
+
+<div class="pro-modal-bg" id="proModal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="pro-modal">
+    <h2>Unlock Pro Features</h2>
+    <ul>
+      <li><span class="check">✓</span>Template Library (50+ layouts)</li>
+      <li><span class="check">✓</span>Responsive Export (all breakpoints)</li>
+      <li><span class="check">✓</span>React Component Export</li>
+    </ul>
+    <div class="price">$14</div>
+    <a class="btn-upgrade" href="https://feifeicch.gumroad.com/l/ai-css-grid-template-pro" target="_blank" rel="noopener">Upgrade to Pro — $14</a>
+    <button class="btn-later" onclick="event.stopPropagation();document.getElementById('proModal').classList.remove('open')">Maybe later</button>
+  </div>
+</div>
+
 <script async src="https://alwingulla.com/88/tag.min.js" data-zone="130747" data-cfasync="false"></script>
 </body>
 </html>
